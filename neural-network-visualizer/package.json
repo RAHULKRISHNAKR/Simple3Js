@@ -1,0 +1,25 @@
+{
+  "name": "neural-network-visualizer",
+  "version": "1.0.0",
+  "description": "A simple neural network visualizer using Three.js.",
+  "main": "src/js/main.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "three": "^0.152.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "live-server": "^1.2.1"
+  },
+  "keywords": [
+    "three.js",
+    "neural network",
+    "visualization"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
