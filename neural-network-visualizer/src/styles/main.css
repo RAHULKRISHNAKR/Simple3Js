@@ -61,3 +61,38 @@ body, html {
     stroke: #2ecc71;
     stroke-width: 2;
 }
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 20, 40, 0.9);
+    border: 1px solid #00aaff;
+    border-radius: 6px;
+    padding: 10px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    max-width: 300px;
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
+}
+
+.tooltip-header {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #00ccff;
+    border-bottom: 1px solid #004466;
+    padding-bottom: 4px;
+}
+
+.tooltip-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.property {
+    color: #88ccff;
+    font-weight: bold;
+}
