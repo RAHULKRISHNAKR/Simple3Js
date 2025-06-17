@@ -6,6 +6,7 @@ class NeuralNetworkVis {
         this.scene = scene;
         this.layers = [];
         this.connections = [];
+        this.modelArchitecture = null;
     }
 
     createLayers(numLayers) {
@@ -118,6 +119,13 @@ class NeuralNetworkVis {
 
     updateLayers(numLayers) {
         this.createLayers(numLayers);
+    }
+
+    // Add a method to load model architecture
+    loadModelArchitecture(architecture) {
+        this.modelArchitecture = architecture;
+        // Will be implemented in the future to build visualization from actual model data
+        console.log("Model architecture loaded:", architecture);
     }
 }
 
