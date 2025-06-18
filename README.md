@@ -16,7 +16,3 @@ npm install
 npm start
 
 '''
-
-
-
-hmmmmmmmm
