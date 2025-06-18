@@ -1,5 +1,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+
+// Export CSS2DObject for use in other files
+export { CSS2DObject };
 
 export function setupScene(container) {
     const scene = new THREE.Scene();
@@ -22,10 +26,32 @@ export function setupScene(container) {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     
+    // Create CSS2D renderer for labels
+    const labelRenderer = new CSS2DRenderer();
+    labelRenderer.setSize(window.innerWidth, window.innerHeight);
+    labelRenderer.domElement.style.position = 'absolute';
+    labelRenderer.domElement.style.top = '0px';
+    labelRenderer.domElement.style.pointerEvents = 'none';
+    
+    // REMOVE THIS ENTIRE TEST LABEL CODE SECTION IF PRESENT
+    /* 
+    const testDiv = document.createElement('div');
+    testDiv.textContent = 'TEST LABEL';
+    testDiv.style.color = 'white';
+    testDiv.style.padding = '2px 5px';
+    testDiv.style.backgroundColor = 'red';
+    testDiv.style.borderRadius = '3px';
+    const testLabel = new CSS2DObject(testDiv);
+    testLabel.position.set(0, 0, 0);
+    scene.add(testLabel);
+    */
+    
     if (container) {
         container.appendChild(renderer.domElement);
+        container.appendChild(labelRenderer.domElement);
     } else {
         document.body.appendChild(renderer.domElement);
+        document.body.appendChild(labelRenderer.domElement);
     }
     
     // Create orbit controls
@@ -56,9 +82,10 @@ export function setupScene(container) {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
     });
     
-    return { scene, camera, renderer, orbitControls };
+    return { scene, camera, renderer, labelRenderer, orbitControls };
 }
 
 // Helper function to add stars
