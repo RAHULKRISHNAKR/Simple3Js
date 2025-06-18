@@ -41,13 +41,9 @@ class Controls {
         const models = [
             { value: 'custom', text: 'Custom Model' },
             { value: 'vgg16', text: 'VGG16' },
-            { value: 'vgg19', text: 'VGG19' },
             { value: 'resnet50', text: 'ResNet50' },
             { value: 'mobilenet', text: 'MobileNet' },
-            { value: 'densenet121', text: 'DenseNet121' },
-            { value: 'efficientnetb0', text: 'EfficientNetB0' },
-            { value: 'inception_v3', text: 'Inception V3' },
-            { value: 'xception', text: 'Xception' }
+            { value: 'inception_v3', text: 'Inception V3' }
         ];
         
         models.forEach(model => {
@@ -113,15 +109,10 @@ class Controls {
     }
     
     loadModel(modelName) {
-        console.log(`Loading model: ${modelName}`);
-        // This will be expanded to actually load model architectures
+        this.showNotification(`Loading model: ${modelName}...`);
         
-        // For now, just show a notification
-        this.showNotification(`Selected model: ${modelName}. Loading...`);
-        
-        // In the future, this will fetch actual model architecture
+        // For now, just update layers based on model type
         setTimeout(() => {
-            // For demonstration purposes only - this would be replaced by actual model loading
             const layerCount = modelName === 'custom' ? 3 : this.getModelDefaultLayers(modelName);
             this.layerCountInput.value = layerCount;
             this.valueDisplay.textContent = layerCount;
@@ -132,17 +123,12 @@ class Controls {
     }
     
     getModelDefaultLayers(modelName) {
-        // Return approximate layer counts for well-known models
-        // (These are simplified for visualization purposes)
+        // Simplified model layer counts
         const modelLayers = {
             'vgg16': 6,
-            'vgg19': 8,
             'resnet50': 7,
             'mobilenet': 5,
-            'densenet121': 6,
-            'efficientnetb0': 5,
-            'inception_v3': 9,
-            'xception': 7
+            'inception_v3': 9
         };
         
         return modelLayers[modelName] || 5;
